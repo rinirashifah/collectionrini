@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: collectionrini-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    region: singapore
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: GIN_MODE
+        value: release
+      - key: API_KEY
+        sync: false # Set in Render Dashboard or generate randomly
+      - key: DATABASE_URL
+        sync: false # Neon PostgreSQL connection string (postgres://user:pass@ep-xyz.neon.tech/neondb?sslmode=require)
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false # Cloudinary cloud name
+      - key: CLOUDINARY_API_KEY
+        sync: false # Cloudinary API key
+      - key: CLOUDINARY_API_SECRET
+        sync: false # Cloudinary API secret
+      - key: CLOUDINARY_FOLDER
+        value: koleksi_rini
